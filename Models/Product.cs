@@ -1,10 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 
 
+namespace Models;
 
 //create the Product class
-
-enum CategoryType
+//lazem kolo public 3ashan yb2a visible lel app
+public enum CategoryType
 {
     Electronics,
     Phones,
@@ -14,8 +15,35 @@ enum CategoryType
     Toys
 }
 
-class Product
+// class Seller
+// {
+//     [Key]
+//     public int Id { get; set; }
+
+//     [StringLength(50, MinimumLength = 3)]
+//     [Required]
+//     public string Name { get; set; }
+
+//     [Required]
+//     public string Address { get; set; }
+
+//     [Required]
+//     public string Phone { get; set; }
+
+//     [Required]
+//     public string Email { get; set; }
+
+//     [Required]
+//     public string Password { get; set; }
+
+//     [Required]
+//     public string ConfirmPassword { get; set; }
+// }
+
+public class Product
 {
+    //properties
+        [Key]
         public int Id { get; set; }
 
         [StringLength(50, MinimumLength = 3)]
@@ -26,13 +54,25 @@ class Product
         public CategoryType Category { get; set; }
 
         [Required]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than 0")]
-        public decimal Price { get; set; }
+        [Range(0.01, 10000000)]
+        public float Price { get; set; }
 
         [Required]
         public string ImageUrl { get; set; }
         
         [Required]
         public string Description { get; set; }
+
+        [Required]
+        public int Quantity { get; set; }
+
+        [Required]
+        public bool IsAvailable { get; set; }
+
+        [Required]
+        public DateTime DateCreated { get; set; }
+
+        // [Required]
+        // public Seller Seller { get; set; }
 
 }
