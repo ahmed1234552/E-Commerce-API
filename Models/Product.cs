@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;//3shan DatabaseGenerated
+
 
 
 namespace Models;
@@ -8,7 +10,7 @@ namespace Models;
 public enum CategoryType
 {
     Electronics,
-    Phones,
+    phones,
     Laptops,
     Groceries,
     Home,
@@ -44,6 +46,7 @@ public class Product
 {
     //properties
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]//auto increment and unique
         public int Id { get; set; }
 
         [StringLength(50, MinimumLength = 3)]

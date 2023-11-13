@@ -38,9 +38,9 @@ app.MapControllers();
 app.Run();
 
 
-//to update the database
 //dotnet add package Microsoft.EntityFrameworkCore.Design
 //dotnet tool install --global dotnet-ef
 
-//dotnet ef migrations add InitialCreate
+//to update the database kol ta8yer t3melo fel models msln
+//dotnet ef migrations add InitialCreate"any name"
 //dotnet ef database update
