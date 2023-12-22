@@ -63,4 +63,27 @@ public class ProductController : ControllerBase
         //that will be included in the response body.
     }
 
+    [HttpPut("{id}")]
+    public async Task<ActionResult<Product>> PutProduct(int id, Product product)
+    {
+        if(id != product.Id)
+            return BadRequest();//error code 400
+        
+        _dbContext.Entry(product).State = EntityState.Modified;
+
+        try
+        {
+            await _dbContext.SaveChangesAsync();
+        }
+        catch(DbUpdateConcurrencyException)
+        {
+            if(!_dbContext.Products.Any(e => e.Id == id))
+                return NotFound();//error code 404
+            else
+                throw;
+        }
+
+        return NoContent();
+    }
+
 }
